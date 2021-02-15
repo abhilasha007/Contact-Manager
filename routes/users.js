@@ -31,7 +31,7 @@ async (req, res)=> {
 
         //warning if user already exists
         if(user){
-            return res.status(400).json('User already exists');
+            return res.status(400).json({msg : 'User already exists'});
         }
         // else making a new user from info ext.
         user = new User({
