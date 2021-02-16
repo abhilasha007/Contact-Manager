@@ -44,12 +44,12 @@ router.post('/',
             let user = await User.findOne({ email });
             //if user does not exist
             if(!user) {
-                return res.status(400).json({ msg: 'The email you entered does not belong to any account. Please check and try again.' });
+                return res.status(400).json({ msg: 'Invalid Credentials' });
             }
             //matching the password
             const isMatch = await bcrypt.compare(password, user.password);
             if(!isMatch) {
-                return res.status(400).json({msg: 'Your password is incorrect. Please double-check.'})
+                return res.status(400).json({msg: 'Invalid Credentials'})
             }
 
             //jwt:--
